@@ -32,7 +32,7 @@ export const registration = async (req,res)=>{
 
         await employee.save();
 
-        res.status(201).json({message:"User regiteered successfully"});
+        res.status(201).json({message:"User registered successfully"});
 
     }catch(error){
          res.status(500).json({message:error.message});

@@ -1,5 +1,6 @@
 import React, {useState,useEffect} from "react";
 import axios from "axios";
+import Sidebar from "../../components/Sidebar";
 
 //rfce
 
@@ -25,7 +26,11 @@ function MyLeavesPage() {
     };
 
   return (
-    <div className = "p-6 text-black">
+    <div className="flex bg-zinc-900 text-white p-6 h-screen">
+
+        <Sidebar/>
+
+      <div className = "  flex-1 p-6">
         
         <h2 className="text-2xl font-semibold mb-4">My Leaves</h2>
         {
@@ -44,6 +49,7 @@ function MyLeavesPage() {
             </div>
         )
         }
+    </div>
     </div>
   );
 }

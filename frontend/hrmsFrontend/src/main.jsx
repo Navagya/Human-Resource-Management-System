@@ -7,9 +7,12 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Employees from "./pages/Employees.jsx";
 import DepartmentPage from './pages/DepartmentPage.jsx';
-import AdminLeavePage from './pages/AdminLeavePage.jsx';
-import MyLeavesPage from './pages/MyLeavesPage.jsx';
-import RequestLeavePage from './pages/RequestLeavePage.jsx';
+import AdminLeavePage from './pages/leaves/AdminLeavePage.jsx';
+import MyLeavesPage from './pages/leaves/MyLeavesPage.jsx';
+import RequestLeavePage from './pages/leaves/RequestLeavePage.jsx';
+import SalariesPage from './pages/SalariesPages.jsx';
+import System from './pages/Settings/System.jsx';
+
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -24,6 +27,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path = "/leave/request" element={<RequestLeavePage/>}/>
         <Route path = "/leave/me" element={<MyLeavesPage/>}/>
         <Route path = "/leave/manage" element={<AdminLeavePage/>}/>
+        <Route path = "/salary" element={<SalariesPage/>}/>
+        <Route path = "/settings" element={<System/>}/>
      </Routes>
   </BrowserRouter>
 );

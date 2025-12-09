@@ -8,6 +8,7 @@ import employeeRoutes from "./routes/employeeRoutes.js";
 import departmentRoutes from "./routes/departmentRoutes.js";
 import leaveRoutes from "./routes/leaveRoutes.js";
 import salaryRoutes from "./routes/salaryRoutes.js";
+import settingsRoute from "./routes/settingsRoute.js";
 
 dotenv.config();
 const app = express();
@@ -27,6 +28,7 @@ app.use("/api/employees",employeeRoutes);
 app.use("/api/departments",departmentRoutes);
 app.use("/api/leaves",leaveRoutes);
 app.use("/api/salaries",salaryRoutes);
+app.use("/api/settings",settingsRoute)
 
 //basic route 
 

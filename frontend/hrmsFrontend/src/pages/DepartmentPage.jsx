@@ -1,5 +1,6 @@
 import React, {useState,useEffect} from "react";
 import axios from "axios";
+import Layout from "../components/Layout";
 import DepartmentList from "../components/DepartmentList";
 import AddDepartmentForm from "../components/AddDepartmentForm";
 
@@ -39,11 +40,16 @@ function DepartmentPage(){
     };
 
     return (
-        <div className="p-6 text-white bg-zinc-900 min-h-screen">
-            <h2 className="text-2xl font-semibold mb-4">Department Management</h2>
-            <AddDepartmentForm onAdd={addDepartment}/>
-            <DepartmentList departments={departments} onDelete={deleteDepartment}/>
-        </div>
+       <Layout>
+           <h2 className="text-2xl font-semibold mb-4">Department Management</h2>
+
+               <AddDepartmentForm onAdd={addDepartment}/>
+
+               <DepartmentList 
+               departments={departments} 
+               onDelete={deleteDepartment}
+            />
+       </Layout>
     );
 }
 
