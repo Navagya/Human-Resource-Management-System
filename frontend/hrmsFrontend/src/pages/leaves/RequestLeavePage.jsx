@@ -5,26 +5,28 @@ import axios from "axios";
 
 function RequestLeavePage(){
     const [reason, setReason] = useState("");
+    const [leaveType, setLeaveType] = useState("");
     const[fromDate, setFromDate] = useState("");
     const [toDate,setToDate]=useState("");
     const [loading,setLoading]=useState(false);
 
     const submitLeave = async(e)=>{
         e.preventDefault();
-        if(!reason||!fromDate||!toDate) return alert("please fill all fields");
+        if(!leaveType||!reason||!fromDate||!toDate) return alert("please fill all fields");
 
         try{
             setLoading(true);
             const token = localStorage.getItem("token");
             const res = await axios.post(
                 "http://localhost:5000/api/leaves/apply",
-                {reason, fromDate,toDate},
+                { leaveType, reason, fromDate, toDate},
                 {
                   headers:{Authorization:`Bearer ${token}`}
                 }
             );
             alert("Leave requested!");
             //reset the fields
+            setLeaveType("");
             setReason("");
             setFromDate("");
             setToDate("");
@@ -40,6 +42,19 @@ function RequestLeavePage(){
         <div className="p-6 text-black">
             <h2 className="text-2xl font-semibold mb-4">Request Leave</h2>
             <form onSubmit={submitLeave} className="max-w-md space-y-3">
+
+                <select
+                   value={leaveType}
+                   onChange={(e) => setLeaveType(e.target.value)}
+                   className="w-full p-2 rounded text-black"
+                   required
+                >
+                 <option value="">Select Leave Type</option>
+                 <option value="Sick">Sick Leave</option>
+                 <option value="Casual">Casual Leave</option>
+                 <option value="Paid">Paid Leave</option>
+                </select>
+
                 <textarea
                 placeholder="Reason"
                 value={reason}

@@ -13,7 +13,12 @@ function Employees(){
     //fetch all employees from backend
    const fetchEmployees = async () => {
     try {
-        const res = await axios.get("http://localhost:5000/api/employees");
+        const token = localStorage.getItem("token");
+        const res = await axios.get("http://localhost:5000/api/employees", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
         setEmployees(res.data);
     } catch (err) {
         console.error("Error fetching employees:", err);

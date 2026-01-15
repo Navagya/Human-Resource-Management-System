@@ -19,8 +19,17 @@ function Login(){
             });
 
             localStorage.setItem("token",res.data.token);
-            alert("Login Successful");
-            navigate("/dashboard");
+            localStorage.setItem("user", JSON.stringify(res.data.user));
+            
+            console.log("Login Successful");
+            
+            const user = res.data.user;
+
+            if (user?.role === "admin") {
+                   navigate("/admin");
+            } else {
+                  navigate("/employee");
+            }
 
         }catch(err){
             alert("Invalid credentials!");

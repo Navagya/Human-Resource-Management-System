@@ -3,8 +3,17 @@ import axios from "axios";
 
 function EmployeeTable({employees, fetchEmployees, setEditingEmployee}){
     const handleDelete = async(id)=>{
+
         try{
-            await axios.delete(`http://localhost:5000/api/employees/${id}`);
+            const token = localStorage.getItem("token");
+            await axios.delete(
+                `http://localhost:5000/api/employees/${id}`,
+                {
+                    headers:{
+                        Authorization:`Bearer ${token}`,
+                    },
+                }
+            );
             fetchEmployees();
 
         }catch(err){

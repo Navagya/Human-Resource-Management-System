@@ -26,19 +26,33 @@ function EmployeeForm({fetchEmployees, editingEmployee, setEditingEmployee}){
     const handleSubmit = async (e) =>{
         e.preventDefault();
         try{
+            const token = localStorage.getItem("token");
             if(editingEmployee){
                 //update exisiting employee
                 await axios.put(
                     `http://localhost:5000/api/employees/${editingEmployee._id}`,
-                    formData
+                    formData,
+                    {
+                        headers:{
+                            Authorization:`Bearer ${token}`,
+                        },
+                    }
                 );
                 setEditingEmployee(null);
 
             }else{
                 //create new employee
-                await axios.post("http://localhost:5000/api/employees",formData);
+                await axios.post(
+                    "http://localhost:5000/api/employees",
+                    formData,
+                    {
+                        headers:{
+                            Authorization:`Bearer ${token}`,
+                        },
+                    }
+                );
             }
-            setFormData({name:"", email:"", department:"", salary:""});
+            setFormData({name: "", email: "", department: "", salary: ""});
             fetchEmployees();
 
         }catch(err){

@@ -26,12 +26,12 @@ function MyLeavesPage() {
     };
 
   return (
-    <div className="flex bg-zinc-900 text-white p-6 h-screen">
+    <div className="flex bg-zinc-900 h-screen text-white">
 
         <Sidebar/>
 
-      <div className = "  flex-1 p-6">
-        
+      <div className = " flex-1">
+        <div className = "p-6"> 
         <h2 className="text-2xl font-semibold mb-4">My Leaves</h2>
         {
             leaves.length===0 ? (
@@ -49,6 +49,7 @@ function MyLeavesPage() {
             </div>
         )
         }
+           </div>
     </div>
     </div>
   );
