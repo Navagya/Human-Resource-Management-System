@@ -8,16 +8,15 @@ const router =express.Router();
 
 //create employee (only admin)
 // router.post('/',authMiddleware,adminMiddleware,createEmployee);
-router.post('/', createEmployee);  
+router.post('/', authMiddleware,adminMiddleware,createEmployee);  
 
 
 //get all employees (only admin)
-router.get('/',getAllEmployees);
-
+router.get('/',authMiddleware,adminMiddleware,getAllEmployees);
 //update employee (only admin)
-router.put('/:id',updateEmployee);
+router.put('/:id',authMiddleware,adminMiddleware,updateEmployee);
 
 //delete employee (only admin)
-router.delete('/:id',deleteEmployee);
+router.delete('/:id',authMiddleware,adminMiddleware,deleteEmployee);
 
 export default router;

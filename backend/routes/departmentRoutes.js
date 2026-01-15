@@ -6,12 +6,12 @@ import {createDepartment,getAllDepartments,deleteDepartment} from "../controller
 const router = express.Router();
 
 //create a new department
-router.post('/',createDepartment);
+router.post('/',authMiddleware,adminMiddleware,createDepartment);
 
 //get all departments
 router.get('/',getAllDepartments);
 
 //delete department (only admin)
-router.delete("/:id",deleteDepartment);
+router.delete("/:id",authMiddleware,adminMiddleware,deleteDepartment);
 
 export default router;

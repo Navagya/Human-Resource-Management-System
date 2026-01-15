@@ -2,9 +2,10 @@ import Leave from '../models/Leave.js';
 
 export const applyLeave = async(req,res)=>{
     try{
-        const {fromDate,toDate,reason}=req.body;
+        const {leaveType,fromDate,toDate,reason}=req.body;
         const newLeave=new Leave({
             employeeId:req.user.id,
+            leaveType,
             fromDate,
             toDate,
             reason
@@ -51,24 +52,33 @@ export const getMyLeaves= async(req,res)=>{
         res.status(500).json({message:err.message});
     }
 }
-export const updateLeaveStatus = async(req,res)=>{
-    try{
-        const {status} = req.body; // 'approved' or 'rejected'
-        
-        const leave = await Leave.findByIdAndUpdate(
-            req.params.id,
-            {status},
-            {new:true}
-        );
+export const updateLeaveStatus = async (req, res) => {
+  try {
+    const { status } = req.body;
 
-        if(!leave){
-            return res.status(404).json({message:"Leave request not found"});
-        }
+    const leave = await Leave.findById(req.params.id);
 
-        res.status(200).json({message:`Leave request successfully ${status}`,leave});
-
-    }catch(error){
-        res.status(500).json({message:error.message});
+    if (!leave) {
+      return res.status(404).json({ message: "Leave request not found" });
     }
+
+    // 🔐 Block self-approval
+    if (leave.employeeId.toString() === req.user.id) {
+      return res.status(403).json({
+        message: "You cannot approve or reject your own leave request"
+      });
+    }
+
+    leave.status = status;
+    await leave.save();
+
+    res.status(200).json({
+      message: `Leave request ${status} successfully`,
+      leave
+    });
+
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
