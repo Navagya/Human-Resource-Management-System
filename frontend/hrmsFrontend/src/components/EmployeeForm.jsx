@@ -1,6 +1,8 @@
 import React , {useEffect,useState} from "react";
 import axios from "axios";
 
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 function EmployeeForm({fetchEmployees, editingEmployee, setEditingEmployee}){
     const [formData, setFormData] = useState({
         name:"",
@@ -30,7 +32,7 @@ function EmployeeForm({fetchEmployees, editingEmployee, setEditingEmployee}){
             if(editingEmployee){
                 //update exisiting employee
                 await axios.put(
-                    `http://localhost:5000/api/employees/${editingEmployee._id}`,
+                    `${BASE_URL}/api/employees/${editingEmployee._id}`,
                     formData,
                     {
                         headers:{
@@ -43,7 +45,7 @@ function EmployeeForm({fetchEmployees, editingEmployee, setEditingEmployee}){
             }else{
                 //create new employee
                 await axios.post(
-                    "http://localhost:5000/api/employees",
+                    `${BASE_URL}/api/employees`,
                     formData,
                     {
                         headers:{

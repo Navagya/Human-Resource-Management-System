@@ -4,6 +4,8 @@ import Layout from "../components/Layout";
 import DepartmentList from "../components/DepartmentList";
 import AddDepartmentForm from "../components/AddDepartmentForm";
 
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 function DepartmentPage() {
     const [departments, setDepartments] = useState([]);
 
@@ -14,7 +16,7 @@ function DepartmentPage() {
     }, []);
 
     const fetchDepartments = async () => {
-        const res = await axios.get("http://localhost:5000/api/departments");
+        const res = await axios.get(`${BASE_URL}/api/departments`);
         setDepartments(res.data);
     };
 
@@ -23,7 +25,7 @@ function DepartmentPage() {
             const token = localStorage.getItem("token");
 
             const res = await axios.post(
-                "http://localhost:5000/api/departments",
+                `${BASE_URL}/api/departments`,
                 { name, description },
                 {
                     headers: {
@@ -42,7 +44,7 @@ function DepartmentPage() {
         try {
             const token = localStorage.getItem("token");
 
-            await axios.delete(`http://localhost:5000/api/departments/${id}`, {
+            await axios.delete(`${BASE_URL}/api/departments/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

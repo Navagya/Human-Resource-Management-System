@@ -3,7 +3,7 @@ import axios from "axios";
 import Sidebar from "../../components/Sidebar";
 
 //rfce
-
+const BASE_URL = import.meta.env.VITE_API_URL;
 function MyLeavesPage() {
 
     const [leaves,setLeaves] = useState([]);
@@ -15,7 +15,7 @@ function MyLeavesPage() {
 
     const fetchLeaves=async()=>{
         try{
-            const res= await axios.get("http://localhost:5000/api/leaves/me",{
+            const res= await axios.get(`${BASE_URL}/api/leaves/me`,{
                 headers:{Authorization:`Bearer ${token}`},
             });
             setLeaves(res.data);

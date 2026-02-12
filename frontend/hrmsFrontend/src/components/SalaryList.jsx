@@ -1,12 +1,14 @@
 import React from "react";
 import axios from "axios";
 
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 export default function SalaryList({ salaries = [], onDelete, refreshSalaries, token }) {
   // optional delete function to call backend
   const handleDelete = async (id) => {
     if (!confirm("Delete this salary record?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/salaries/${id}`, {
+      await axios.delete(`${BASE_URL}/api/salaries/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       // update local list

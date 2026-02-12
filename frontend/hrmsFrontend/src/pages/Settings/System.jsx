@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Layout from "../../components/Layout";
 
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 const System = () => {
   const [settings, setSettings] = useState({
     companyName: "",
@@ -12,7 +14,7 @@ const System = () => {
   // Load Settings from Backend
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/settings", {
+      .get(`${BASE_URL}/api/settings`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -31,7 +33,7 @@ const System = () => {
 
   const handleSave = () => {
     axios
-      .post("http://localhost:5000/api/settings", settings, {
+      .post(`${BASE_URL}/api/settings`, settings, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

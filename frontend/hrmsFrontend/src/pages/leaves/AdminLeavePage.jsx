@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../../components/Sidebar";
 import Layout from "../../components/Layout";
-
+const BASE_URL = import.meta.env.VITE_API_URL;
 function AdminLeavePage() {
   const [leaves, setLeaves] = useState([]);
   const token = localStorage.getItem("token");
@@ -13,7 +13,7 @@ function AdminLeavePage() {
 
   const fetchLeaves = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/leaves/view", {
+      const res = await axios.get(`${BASE_URL}/api/leaves/view`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setLeaves(res.data);
@@ -26,7 +26,7 @@ function AdminLeavePage() {
   const updateStatus = async (id, status) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/leaves/update/${id}`,
+        `${BASE_URL}/api/leaves/update/${id}`,
         { status },
         { headers: { Authorization: `Bearer ${token}` } }
       );

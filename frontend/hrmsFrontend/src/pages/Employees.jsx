@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 import EmployeeForm from "../components/EmployeeForm";
 import EmployeeTable from "../components/EmployeeTable";
 
-
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 function Employees(){
     const [employees, setEmployees] = useState([]);
@@ -14,7 +14,7 @@ function Employees(){
    const fetchEmployees = async () => {
     try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:5000/api/employees", {
+        const res = await axios.get(`${BASE_URL}/api/employees`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

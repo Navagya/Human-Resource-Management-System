@@ -1,13 +1,15 @@
 import React from "react";
 import axios from "axios";
 
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 function EmployeeTable({employees, fetchEmployees, setEditingEmployee}){
     const handleDelete = async(id)=>{
 
         try{
             const token = localStorage.getItem("token");
             await axios.delete(
-                `http://localhost:5000/api/employees/${id}`,
+                `${BASE_URL}/api/employees/${id}`,
                 {
                     headers:{
                         Authorization:`Bearer ${token}`,

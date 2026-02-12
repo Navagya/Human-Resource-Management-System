@@ -4,6 +4,8 @@ import AddSalaryForm from "../components/AddSalaryForm";
 import SalaryList from "../components/SalaryList";
 import Layout from "../components/Layout";
 
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 function SalariesPage() {
   const [salaries, setSalaries] = useState([]);
   const [employees, setEmployees] = useState([]);
@@ -19,7 +21,7 @@ function SalariesPage() {
   // GET /api/salaries (admin-only on backend)
   const fetchSalaries = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/salaries", {
+      const res = await axios.get(`${BASE_URL}/api/salaries`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setSalaries(res.data);
@@ -32,7 +34,7 @@ function SalariesPage() {
   // GET /api/employees (to populate employee dropdown)
   const fetchEmployees = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/employees", {
+      const res = await axios.get(`${BASE_URL}/api/employees`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setEmployees(res.data);
