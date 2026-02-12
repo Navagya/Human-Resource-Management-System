@@ -15,11 +15,7 @@ const app = express();
 
 //middleware
 app.use(express.json());
-app.use(cors({
-    origin:"http://localhost:5173",
-    credentials:true,
-    allowedHeaders:["Content-type", "Authorization"]
-}));
+app.use(cors());
 
 
 app.use("/api/auth",authRoutes);
@@ -51,9 +47,10 @@ const connectDB=async()=>{
     }
 };
 
-const PORT=process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
-app.listen(PORT,()=>{
-    connectDB();
-    console.log(`Server is runnig on port ${PORT}`);
+connectDB().then(() => {
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
 });
