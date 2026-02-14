@@ -1,47 +1,27 @@
-⭐ Human Resource Management System (HRMS)
-
-LIVE LINKS:-
-backend:https://human-resource-management-system-backend-b1md.onrender.com
-frontend:https://human-resource-management-system-17.vercel.app
-
-
-Modules and screenshots:-
-
-
-📌 Overview
+🏢 Human Resource Management System (HRMS)
 
 A full-stack Human Resource Management System built using the MERN stack to manage employee records and administrative operations.
 
-This project simulates a real-world internal HR tool used by organizations to handle employee data, roles, and management workflows efficiently.
+This project simulates a real-world internal HR tool used by organizations to handle employee data, authentication, and management workflows efficiently.
 
+🌐 Live Demo
 
-🚀 Features
+🔹 Frontend: https://human-resource-management-system-17.vercel.app
 
-🔐 JWT Authentication (Login / Signup)
+🔹 Backend API: https://human-resource-management-system-backend-b1md.onrender.com
 
-👤 Role-based access control (Admin / Employee)
+🛠 Tech Stack
+🔹 Frontend
 
-➕ Add, edit, delete employees
+React.js (Vite)
 
-📋 Manage employee profiles & details
+Tailwind CSS
 
-🔎 Search & filter employees
+Axios
 
-📊 Admin dashboard
+React Router
 
-🔄 RESTful APIs
-
-💾 MongoDB database integration
-
-🛠️ Tech Stack
-
-Frontend:
-
-React.js
-
-Tailwind
-
-Backend:
+🔹 Backend
 
 Node.js
 
@@ -49,20 +29,106 @@ Express.js
 
 JWT Authentication
 
-Database:
+bcryptjs
 
-MongoDB + Mongoose
+🔹 Database
 
-What I Learned:-
+MongoDB (MongoDB Atlas)
+
+Mongoose
+
+🔹 Deployment
+
+Frontend: Vercel
+
+Backend: Render
+
+✨ Features
+
+🔐 Secure JWT-based Authentication (Login / Signup)
+
+👤 Role-Based Access Control (Admin / Employee)
+
+➕ Add, Edit, Delete Employees (CRUD Operations)
+
+📋 Manage Employee Profiles & Details
+
+🔎 Search & Filter Employees
+
+📊 Admin Dashboard
+
+🔄 RESTful API Architecture
+
+💾 MongoDB Database Integration
+
+🌍 Full Production Deployment (Frontend + Backend)
+
+📸 Screenshots
+
+🔐 Login Page 
+![Login Page](./Screenshots/login.png)
+
+🔐 Registration Page 
+![Registration Page](./Screenshots/registration.png)
+
+📊 Admin Dashboard
+![Admin Dashboard](./Screenshots/admin_dashboard.png)
+
+👥 Employee Management
+![Employee Management](./Screenshots/employee.png)
+
+📋 Apply leave
+![Apply leave](./Screenshots/applyLeave.png)
+
+Department
+![Department](./Screenshots/department.png)
+
+📊 Employee Dashboard
+![Employee Dashboard](./Screenshots/employee_dashboard.png)
+
+Salary
+![Salary](./Screenshots/salary.png)
+
+
+
+⚙️ Installation (Run Locally)
+1️⃣ Clone Repository
+git clone https://github.com/Navagya/Human-Resource-Management-System
+cd Human-Resource-Management-System
+
+2️⃣ Backend Setup
+cd backend
+npm install
+npm run dev
+
+3️⃣ Frontend Setup
+cd frontend/hrmsFrontend
+npm install
+npm run dev
+
+🔐 Environment Variables
+Backend .env
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+PORT=5000
+
+Frontend .env
+VITE_API_URL=https://human-resource-management-system-backend-b1md.onrender.com
+
+📚 What I Learned
 
 Designing secure authentication using JWT
 
-Building REST APIs with Express
+Implementing role-based authorization
 
-MongoDB schema design
+Building REST APIs with Express.js
 
-Role-based authorization
+MongoDB schema design using Mongoose
 
-Connecting frontend with backend
+Connecting frontend and backend in production
 
-Structuring a full-stack MERN application
+Managing environment variables securely
+
+Debugging deployment issues
+
+Implementing CI/CD using GitHub + Vercel + Render
