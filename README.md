@@ -1,4 +1,13 @@
 ⭐ Human Resource Management System (HRMS)
+
+LIVE LINKS:-
+backend:https://human-resource-management-system-backend-b1md.onrender.com
+frontend:https://human-resource-management-system-17.vercel.app
+
+
+Modules and screenshots:-
+
+
 📌 Overview
 
 A full-stack Human Resource Management System built using the MERN stack to manage employee records and administrative operations.
