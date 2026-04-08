@@ -33,10 +33,10 @@ function Login(){
                   navigate("/employee");
             }
 
-        }catch(err){
-            alert("Invalid credentials!");
-            console.log(err);
-        }
+        }catch (err) {
+    console.log("ERROR MESSAGE:", err?.response?.data);
+    alert(err?.response?.data?.message || "Something went wrong");
+}
     };
 
     return (
