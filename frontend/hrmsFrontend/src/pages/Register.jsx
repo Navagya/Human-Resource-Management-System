@@ -11,7 +11,7 @@ function Register(){
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
-
+        console.log("BASE_URL:", BASE_URL); //Debugging line
         try{
             await axios.post(`${BASE_URL}/api/auth/register`,{
                 name,
@@ -19,12 +19,12 @@ function Register(){
                 password,
                 role
             });
-
+           
             alert("registration successfull!");
             navigate("/login");
 
         }catch(err){
-
+            
             alert("registration failed! ");
             console.log(err);
 
