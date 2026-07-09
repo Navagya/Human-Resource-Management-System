@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { FaBell, FaSignOutAlt } from "react-icons/fa";
 
 function Topbar() {
   const navigate = useNavigate();
@@ -15,25 +16,52 @@ function Topbar() {
   };
 
   return (
-    <div className="w-full h-16 bg-zinc-900 text-white flex justify-between items-center px-6 border-b border-zinc-800">
-      {/* LEFT */}
-      <h2 className="text-lg font-semibold">
-        {role === "admin" ? "Admin Dashboard" : "Employee Dashboard"}
-      </h2>
+    <div className="h-20 bg-slate-900 border-b border-slate-800 flex justify-between items-center px-8">
 
-      {/* RIGHT */}
-      <div className="flex items-center gap-4">
-        <p className="text-sm text-zinc-300">
-          Welcome, <span className="font-medium text-white">{name}</span>
+      <div>
+        <h2 className="text-2xl font-bold text-white">
+          {role === "admin"
+            ? "Admin Dashboard"
+            : "Employee Dashboard"}
+        </h2>
+
+        <p className="text-gray-400 text-sm">
+          Welcome back dear {name} !
         </p>
+      </div>
+
+      <div className="flex items-center gap-5">
+
+        <button className="relative text-gray-300 hover:text-white">
+
+          <FaBell size={20} />
+
+          <span className="absolute -top-2 -right-2 bg-red-500 rounded-full w-2 h-2"></span>
+
+        </button>
+
+        <div className="text-right">
+
+          <p className="text-white font-semibold">
+            {name}
+          </p>
+
+          <p className="text-gray-400 text-sm capitalize">
+            {role}
+          </p>
+
+        </div>
 
         <button
           onClick={handleLogout}
-          className="px-3 py-1 bg-red-500 rounded-md hover:bg-red-600 text-sm"
+          className="flex items-center gap-2 bg-red-500 hover:bg-red-600 transition px-4 py-2 rounded-lg text-white"
         >
+          <FaSignOutAlt />
           Logout
         </button>
+
       </div>
+
     </div>
   );
 }
