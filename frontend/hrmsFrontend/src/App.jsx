@@ -16,6 +16,7 @@ import Attendance from "./pages/employee/Attendance";
 import Payslips from "./pages/employee/Payslips";
 import AdminDashboard from "./pages/AdminDashboard";
 import EmployeeDashboard from "./pages/EmployeeDashboard";
+import Settings from "./pages/Settings/Settings";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route path="my-leaves" element={<MyLeavesPage />} />
           <Route path="approve" element={<AdminLeavePage />} />
         </Route> 
+        <Route path="/settings" element={<Settings />} />
       </Routes>
       </div>
   );
